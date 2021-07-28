@@ -14,6 +14,10 @@ export default function ScreenZusammenfassung ({ navigation, route }) {
     const userLoesung2 = route.params.userLoesung2;
     const userLoesung3 = route.params.userLoesung3; 
     
+    var RNFS = require('react-native-fs');
+    var path = RNFS.DocumentDirectoryPath + '/test.txt';
+
+    //RNFS.writeFile(path, 'testText').then((success) => {console.log('FILE WRITTEN');})
     
     return(
          
@@ -29,7 +33,7 @@ export default function ScreenZusammenfassung ({ navigation, route }) {
                 <List.Item style={styles.checkboxen2} left={props => <List.Icon icon='check-circle'/>} title={userLoesung3} />
                 
                
-                <Button onPress= {() => navigation.navigate("ScreenMain")} mode='contained' style={styles.buttonNeuesProblem}>
+                <Button onPress= {() => navigation.navigate("ScreenMain"), RNFS.writeFile(path, 'testText').then((success) => {console.log('FILE WRITTEN');})} mode='contained' style={styles.buttonNeuesProblem}>
                     NEUES PROBLEM
                 </Button>
             
